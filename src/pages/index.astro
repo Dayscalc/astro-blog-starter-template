@@ -7,44 +7,231 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Top 10 Resorts with prices and instant WhatsApp booking">
+  <meta name="keywords" content="Resorts, Booking, Chennai, Beach Resorts, Vacation">
+  <meta name="author" content="Your Company Name">
+  <title>Top 10 Resorts - Instant Booking</title>
+  <style>
+    :root {
+      --primary-color: #004aad;
+      --secondary-color: #25D366;
+      --text-color: #333;
+      --bg-light: #f9f9f9;
+      --card-bg: #fff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-color);
+    }
+    header {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 55px;
+    }
+    header .phone {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .banner {
+      width: 100%;
+      height: 350px;
+      background: url('banner.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+    h1 {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 2.2em;
+      color: var(--primary-color);
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding-bottom: 40px;
+    }
+    .resort {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .resort:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .resort img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .resort-details {
+      padding: 20px;
+      flex-grow: 1;
+    }
+    .resort-details h2 {
+      margin-bottom: 10px;
+      font-size: 1.4em;
+      color: var(--primary-color);
+    }
+    .resort-details p {
+      margin: 6px 0;
+      font-size: 0.95em;
+    }
+    .check-btn {
+      background: var(--secondary-color);
+      color: #fff;
+      text-align: center;
+      padding: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 0 0 12px 12px;
+      transition: background 0.3s;
+      font-size: 1em;
+    }
+    .check-btn:hover {
+      background: #1ebe57;
+    }
+    .info-section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .info-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+    .info-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .info-content img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .info-content p {
+      font-size: 1em;
+      line-height: 1.7;
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    footer .footer-links {
+      margin-bottom: 20px;
+    }
+    footer .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+    footer .footer-links a:hover {
+      color: #fff;
+    }
+    footer p {
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    @media(max-width:768px){
+      .info-content{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Company Logo">
+    <div class="phone">Call Us: 90000000</div>
+  </header>
+
+  <div class="banner">Discover Your Perfect Resort</div>
+
+  <h1>Top 10 Resorts</h1>
+
+  <div class="container">
+    <!-- Resort Cards -->
+    <div class="resort">
+      <img src="resort1.jpg" alt="Resort 1">
+      <div class="resort-details">
+        <h2>Resort 1</h2>
+        <p>Price: ₹4,500 / night</p>
+        <p>Location: ECR, Chennai</p>
+      </div>
+      <a class="check-btn" href="https://wa.me/90000000?text=I%20want%20to%20check%20availability%20for%20Resort%201" target="_blank">Check Availability</a>
+    </div>
+    <!-- Repeat resorts 2-10 as before -->
+  </div>
+
+  <div class="info-section">
+    <h2>Experience the Best Beach Resorts in Chennai</h2>
+    <div class="info-content">
+      <p>
+        Chennai's East Coast Road (ECR) is home to some of the most stunning beach resorts in India, offering a perfect blend of luxury and nature. Whether you're planning a weekend getaway, a romantic retreat, or a family vacation, these resorts provide top-class amenities including private beach access, infinity pools, and gourmet dining experiences. Each property boasts spacious rooms with breathtaking sea views and contemporary interiors that create a serene environment. Guests can indulge in spa treatments, adventure water sports, and cultural activities, making every stay a memorable one. 
+        <br><br>
+        Apart from relaxation, the resorts along ECR serve as an excellent base to explore local attractions like Mahabalipuram, Crocodile Bank, and Dakshina Chitra. Many resorts also host corporate team outings and wedding events, ensuring professional arrangements with elegant decor. With a variety of price points, from budget-friendly cottages to premium luxury villas, there is something for every traveler. The coastal breeze, combined with warm hospitality, makes these resorts the top choice for visitors seeking comfort and tranquility. 
+        <br><br>
+        Booking your stay is simple and quick through WhatsApp. Each resort listing here comes with an instant check availability option, allowing you to confirm your stay within minutes. Our curated list ensures you get only the best options, carefully chosen for quality service, cleanliness, and guest satisfaction. Enjoy fresh seafood delicacies, sip cocktails by the pool, or take a moonlit walk along the sandy shores. These resorts promise not just a stay but an unforgettable experience where luxury meets the charm of Chennai's coastline.
+      </p>
+      <img src="beach-view.jpg" alt="Beach View">
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+    </div>
+    <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+    <p>Follow us on 
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a>
+    </p>
+  </footer>
+</body>
 </html>
+
